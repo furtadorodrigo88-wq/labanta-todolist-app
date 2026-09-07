@@ -1,3 +1,17 @@
 services:
-    db:
-      
+    postgres15:
+        container_name: postgres15
+        image: postgres:15
+        restart: unless-stopped
+        environment:
+            POSTGRES_DB: postgres
+            POSTGRES_PASSWORD: postgres
+            TZ: "Atlantic/Cape_Verde"
+        volumes:
+            - pg15_data:/var/lib/postgresql/data/
+        ports:
+            - 5432:5432
+
+volumes:
+    pg15_data:
+        name: pg15_data
