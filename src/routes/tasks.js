@@ -69,3 +69,5 @@ router.post('/tasks/:id/delete', requireAuth, async (req, res) => {
 });
 
 module.exports = router;
+
+//TUDO: campo priority
