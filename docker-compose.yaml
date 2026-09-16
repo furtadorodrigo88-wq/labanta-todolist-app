@@ -34,6 +34,8 @@ services:
         restart: unless-stopped
         volumes:
             - pgadmin-2025:/var/lib/pgadmin
+        networks:
+            - todolist-network
 
 volumes:
     pg15_data:
