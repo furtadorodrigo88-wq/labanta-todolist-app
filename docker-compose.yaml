@@ -15,7 +15,7 @@ services:
             - todolist-network
     todolist-app:
         container_name: todolist-app
-        # build: .
+        build: .
         image: todolist-app:0.0.0
         env_file:
             - .env
