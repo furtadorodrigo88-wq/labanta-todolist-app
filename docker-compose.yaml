@@ -36,12 +36,34 @@ services:
             - pgadmin-2025:/var/lib/pgadmin
         networks:
             - todolist-network
+    sonarqube:
+        image: sonarqube:26.1.0.118079-community
+        container_name: sonarqube
+        ports:
+            - "9000:9000"
+        environment:
+            SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: true
+            SONAR_JDBC_URL: ${SONAR_JDBC_URL}
+            SONAR_JDBC_USERNAME: ${SONAR_JDBC_USERNAME}
+            SONAR_JDBC_PASSWORD: ${SONAR_JDBC_PASSWORD}
+        volumes:
+            - sonarqube_data:/opt/sonarqube/data
+            - sonarqube_extensions:/opt/sonarqube/extensions
+            - sonarqube_logs:/opt/sonarqube/logs
+        networks:
+            - todolist-network
 
 volumes:
     pg15_data:
         name: pg15_data
     pgadmin-2025:
         name: pgadmin-2025
+    sonarqube_data:
+        name: sonarqube_data
+    sonarqube_extensions:
+        name: sonarqube_extensions
+    sonarqube_logs:
+        name: sonarqube_logs
 
 networks:
     todolist-network:
