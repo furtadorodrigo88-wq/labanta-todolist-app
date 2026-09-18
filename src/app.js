@@ -9,7 +9,9 @@ const taskRoutes = require('./routes/tasks');
 const apiRoutes = require('./routes/api');
 
 // Initialize Express app
-const app = express();
+//const app = express();
+let app = express();
+app.disable("x-powered-by");
 
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
